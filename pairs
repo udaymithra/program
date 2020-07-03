@@ -1,0 +1,9 @@
+l=[15,20,13,200,7,19,5]
+value=220
+nl=[]
+while l:
+    a=l.pop()
+    diff=value-a
+    if diff in l:
+        nl.append((a,diff))
+print(nl)
