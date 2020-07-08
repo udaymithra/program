@@ -1,0 +1,107 @@
+class node:
+    def __init__(self):
+        self.data=None
+        self.next=None
+    def setData(self,data):
+        self.data=data
+    def getData(self):
+        return self.data
+    def setNext(self,next):
+        self.next=next
+    def getNext(self):
+        return self.next
+    def hasNext(self):
+        return self.next!=None
+class linkedlist:
+    def __init__(self):
+        self.length=0
+    def insb(self,data):
+        temp=node()
+        if self.length==0:
+            temp.setData(data)
+            self.head=temp
+        else:
+            temp.setData(data)
+            temp.setNext(self.head)
+            self.head=temp
+        self.length+=1
+    def inse(self,data):
+        current=self.head
+        while current.getNext() is not None:
+            current=current.getNext()
+        temp=node()
+        temp.setData(data)
+        current.setNext(temp)
+        self.length+=1
+    def insAtAnyPosition(self,position,data):
+        if position>self.length or position <0:
+            print("Impossible")
+        else:
+            if position==0:
+                self.insb(data)
+            elif position==self.length:
+                self.inse(data)
+            else:
+                current=self.head
+                count=0
+                while count<position-1:
+                    current=current.getNext()
+                    count+=1
+                temp=node()
+                temp.setData(data)
+                temp.setNext(current.getNext())
+                current.setNext(temp)
+                self.length+=1
+    def display(self):
+        current=self.head
+        while current != None:
+            print(current.getData())
+            current=current.getNext()
+    def delb(self):
+        if self.length==0:
+            print("Deletion is not possible")
+        else:
+            self.head=self.head.getNext()
+            self.length-=1
+    def delend(self):
+        if self.length==0:
+            print("Deletion not possible")
+        else:
+            current=self.head
+            while current.getNext()!=None:
+                previous=current
+                current=current.getNext()
+            previous.setNext(None)
+            self.length-=1
+    def deleteAtAnyPosition(self,position):
+        if position>self.length or position <0:
+            print("Impossible")
+        else:
+            if position==0:
+                self.delb()
+            elif position == self.length:
+                self.delend()
+            else:
+                count=0
+                current=self.head
+                while count<=position-1:
+                    previous=current
+                    current=current.getNext()
+                    count+=1
+                previous.setNext(current.getNext())
+                self.length-=1
+obj=linkedlist()
+obj.insAtAnyPosition(0,10)
+obj.insAtAnyPosition(1,50)
+obj.insAtAnyPosition(1,20)
+obj.insAtAnyPosition(2,30)
+obj.insAtAnyPosition(3,40)
+print(obj.display())
+obj.deleteAtAnyPosition(0)
+obj.deleteAtAnyPosition(3)
+obj.deleteAtAnyPosition(1)
+print(obj.display())
+        
+        
+
+        
