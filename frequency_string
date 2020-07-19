@@ -1,12 +1,12 @@
-s="tree"
-d={}
-for i in s:
-    if i in d:
-        d[i]+=1
+string=input()
+frequency={}
+for i in string:
+    if i in frequency:
+        frequency[i]+=1
     else:
-        d[i]=1
-value = sorted(d, key=d.get,reverse = True)
-ans=""
-for i in value:
-    ans+=i *d[i]
-print(ans)
+        frequency[i]=1
+sorted_frequency= sorted(frequency, key=frequency.get,reverse = True)
+output=""
+for i in sorted_frequency:
+    output+=i *frequency[i]
+print(output)
