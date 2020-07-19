@@ -1,0 +1,12 @@
+s="tree"
+d={}
+for i in s:
+    if i in d:
+        d[i]+=1
+    else:
+        d[i]=1
+value = sorted(d, key=d.get,reverse = True)
+ans=""
+for i in value:
+    ans+=i *d[i]
+print(ans)
