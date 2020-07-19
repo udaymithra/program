@@ -1,0 +1,11 @@
+nums=[1,1,1,2,2,3]
+k=2
+frequency= {}
+for i in nums:
+    if i in frequency:
+        frequency[i] +=1
+    else:
+        frequency[i] = 1
+        
+sorted_array = sorted(frequency, key = frequency.get,reverse=True)
+print(sorted_array[:k])
